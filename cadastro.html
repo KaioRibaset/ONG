@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastre-se como voluntário da Alimentar com Amor: escolha o projeto em que quer ajudar e os dias em que pode participar. Não precisa ter experiência.">
+    <title>Cadastro - Alimentar com Amor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+    <!-- CABEÇALHO E MENU: igual ao do index.html (só muda o class="ativo") -->
+    <header class="topo">
+        <div class="container">
+            <a class="marca" href="index.html">
+                <span class="logo">
+                    <img src="imagens/projetos/logo.png" alt="Logo da ONG Alimentar com Amor">
+                </span>
+                <span>ONG - Alimentar com Amor</span>
+            </a>
+            <button type="button" class="hamburguer" id="botao-menu" aria-label="Abrir ou fechar o menu">&#9776;</button>
+            <nav class="menu-principal" id="menu-principal">
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li class="tem-submenu">
+                        <a href="projetos.html">Projetos</a>
+                        <ul class="submenu">
+                            <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                            <li><a href="projetos.html#como-doar">Como doar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cadastro.html" class="ativo">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Apresentação -->
+        <section class="secao secao-clara">
+            <div class="container">
+                <h1>Cadastro de voluntários</h1>
+                <p class="introducao">Preencha o formulário, escolha o projeto em que quer ajudar e diga em quais dias você pode participar. Qualquer pessoa pode ajudar, não precisa ter experiência.</p>
+            </div>
+        </section>
+
+        <!-- Formulário -->
+        <section class="secao" id="formulario">
+            <div class="container">
+                <p class="alerta alerta-aviso"><strong>Importante:</strong> os cadastros ficam salvos apenas neste computador, no navegador. Nenhum dado é enviado para a internet.</p>
+
+                <form class="cartao formulario" id="form-cadastro" novalidate>
+                    <div class="formulario-grade">
+
+                        <div class="campo campo-largo">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" id="nome" name="nome" autocomplete="name" maxlength="100" required aria-describedby="erro-nome">
+                            <p class="erro-campo" id="erro-nome" role="alert"></p>
+                        </div>
+
+                        <div class="campo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required aria-describedby="erro-email">
+                            <p class="erro-campo" id="erro-email" role="alert"></p>
+                        </div>
+
+                        <div class="campo">
+                            <label for="telefone">Telefone com DDD</label>
+                            <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="numeric" placeholder="(11) 91234-5678" maxlength="15" required aria-describedby="erro-telefone">
+                            <p class="erro-campo" id="erro-telefone" role="alert"></p>
+                        </div>
+
+                        <div class="campo">
+                            <label for="nascimento">Data de nascimento</label>
+                            <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required aria-describedby="erro-nascimento">
+                            <p class="erro-campo" id="erro-nascimento" role="alert"></p>
+                        </div>
+
+                        <div class="campo">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required aria-describedby="erro-cidade">
+                            <p class="erro-campo" id="erro-cidade" role="alert"></p>
+                        </div>
+
+                        <div class="campo campo-largo">
+                            <label for="projeto">Em qual projeto quer ajudar?</label>
+                            <select id="projeto" name="projeto" required aria-describedby="erro-projeto">
+                                <option value="">Escolha um projeto</option>
+                                <option value="Cestas básicas">Cestas básicas</option>
+                                <option value="Cozinha comunitária">Cozinha comunitária</option>
+                                <option value="Horta urbana">Horta urbana</option>
+                                <option value="Onde mais precisar">Onde mais precisar</option>
+                            </select>
+                            <p class="erro-campo" id="erro-projeto" role="alert"></p>
+                        </div>
+
+                        <fieldset class="campo campo-largo" aria-describedby="erro-dias">
+                            <legend>Dias em que você pode ajudar</legend>
+                            <div class="opcoes">
+                                <label class="opcao"><input type="checkbox" name="dias" value="Segunda"><span>Segunda</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Terça"><span>Terça</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Quarta"><span>Quarta</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Quinta"><span>Quinta</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Sexta"><span>Sexta</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Sábado"><span>Sábado</span></label>
+                                <label class="opcao"><input type="checkbox" name="dias" value="Domingo"><span>Domingo</span></label>
+                            </div>
+                            <p class="erro-campo" id="erro-dias" role="alert"></p>
+                        </fieldset>
+
+                        <div class="campo campo-largo">
+                            <label for="mensagem">Quer nos contar mais? <span class="opcional">(opcional)</span></label>
+                            <textarea id="mensagem" name="mensagem" maxlength="500" rows="4"></textarea>
+                            <p class="ajuda"><span id="contador">0</span>/500 caracteres</p>
+                        </div>
+
+                        <div class="campo campo-largo">
+                            <label class="aceite" for="aceite">
+                                <input type="checkbox" id="aceite" name="aceite" aria-describedby="erro-aceite">
+                                <span>Concordo em ser contatado pela equipe da ONG por e-mail ou telefone.</span>
+                            </label>
+                            <p class="erro-campo" id="erro-aceite" role="alert"></p>
+                        </div>
+                    </div>
+
+                    <div class="formulario-acoes">
+                        <button type="submit" class="botao">Enviar cadastro</button>
+                        <button type="reset" class="botao botao-sec" id="botao-limpar">Limpar</button>
+                        <p class="mensagem" id="mensagem-cadastro" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Lista de cadastrados -->
+        <section class="secao secao-clara" id="cadastrados">
+            <div class="container">
+                <div class="lista-topo">
+                    <h2>Voluntários cadastrados <span id="total"></span></h2>
+                    <div class="lista-botoes">
+                        <button type="button" class="botao botao-sec" id="botao-csv">Baixar lista (CSV)</button>
+                        <button type="button" class="botao botao-sec" id="botao-apagar-tudo">Apagar todos</button>
+                    </div>
+                </div>
+
+                <p class="lista-vazia" id="lista-vazia">Nenhum voluntário cadastrado neste computador ainda.</p>
+                <ul class="voluntarios" id="lista-voluntarios"></ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>&copy; 2026 Alimentar com Amor. Projeto acadêmico com dados fictícios.</p>
+            <p><a href="cadastro.html">Quero ser voluntário ou doador</a></p>
+        </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/cadastro.js"></script>
+</body>
+</html>

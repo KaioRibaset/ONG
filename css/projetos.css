@@ -1,0 +1,147 @@
+/* =========================================================
+   projetos.css | estilos SÓ da página Projetos
+   Depende do style.css (carregue o style.css antes): usa as
+   variáveis, a grade de 12 colunas, os cards, botões e o menu dele.
+   Breakpoints usados: 768px e 1024px (os mesmos do style.css)
+   ========================================================= */
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Apresentação (título + carrossel) ---------- */
+.apresentacao-grade { display: grid; gap: var(--esp-4); align-items: center; }
+.introducao { max-width: 62ch; font-size: var(--fs-500); color: var(--cor-texto-suave); }
+
+/* ---------- Carrossel (o JavaScript troca a classe .ativo) ---------- */
+.carrossel {
+  overflow: hidden;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+}
+.carrossel-slides { position: relative; aspect-ratio: 3 / 2; }
+.slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+.slide.ativo { opacity: 1; pointer-events: auto; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.legenda {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--esp-2);
+  font-size: var(--fs-300);
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to top, rgba(19, 77, 42, 0.9), rgba(19, 77, 42, 0.35));
+}
+.carrossel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--esp-1) var(--esp-2);
+}
+.carrossel-botao {
+  width: 42px;
+  height: 42px;
+  font-size: var(--fs-400);
+  color: var(--cor-primaria-escura);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.carrossel-botao:hover { color: #fff; background: var(--cor-primaria-escura); }
+.carrossel-pontos { display: flex; gap: var(--esp-1); }
+.ponto {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.ponto.ativo { background: var(--cor-primaria); }
+
+/* ---------- Cards com foto (complementa o .cartao do style.css) ---------- */
+.cartao-img { gap: 0; padding: 0; overflow: hidden; }
+.cartao-img img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.cartao-texto { display: flex; flex-direction: column; gap: var(--esp-1); padding: var(--esp-3); }
+.cartao .botao { align-self: flex-start; }
+
+/* ---------- Voluntariado: lista numerada de passos ---------- */
+.voluntariado-grade { display: grid; gap: var(--esp-4); }
+.passos { margin: 0; padding: 0; list-style: none; counter-reset: passo; }
+.passos li {
+  position: relative;
+  margin-bottom: var(--esp-2);
+  padding: 2px 0 2px 52px;
+  counter-increment: passo;
+}
+.passos li::before {
+  content: counter(passo);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-family: var(--fonte-titulo);
+  color: #fff;
+  background: var(--cor-primaria-escura);
+  border-radius: 50%;
+}
+
+/* ---------- Mensagem de sucesso/erro (o JavaScript troca a classe) ---------- */
+.mensagem { min-height: 1.6em; font-weight: bold; }
+.mensagem.sucesso { color: var(--cor-sucesso); }
+.mensagem.erro { color: var(--cor-erro); }
+
+/* ---------- Galeria ---------- */
+.galeria figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+}
+.galeria img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.galeria figcaption { padding: var(--esp-1) var(--esp-2); font-weight: bold; color: var(--cor-primaria-escura); }
+/* Se uma foto não existir, o JavaScript adiciona a classe .sem-imagem */
+.galeria figure.sem-imagem img { display: none; }
+.galeria figure.sem-imagem::before {
+  content: "Foto em breve";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 2;
+  font-weight: bold;
+  color: var(--cor-texto-suave);
+  background: var(--cor-borda);
+}
+
+/* ---------- Chamada final ---------- */
+.destaque { padding: var(--esp-5) 0; text-align: center; color: #fff; background: var(--cor-primaria-escura); }
+.destaque h2 { color: #fff; }
+.destaque p:last-child { margin-bottom: 0; }
+.destaque .botao { color: var(--cor-texto); background: var(--cor-destaque); border-color: var(--cor-destaque); }
+.destaque .botao:hover { background: #fff; border-color: #fff; }
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 1024px) {
+  .apresentacao-grade, .voluntariado-grade { grid-template-columns: 1fr 1fr; gap: var(--esp-5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .slide { transition: none; }
+}

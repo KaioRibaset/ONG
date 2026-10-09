@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alimentar com Amor é uma ONG que combate a fome com cestas básicas, cozinha comunitária e horta urbana. Conheça nossa missão, nossa história e como falar com a gente.">
+    <title>Página Inicial - Alimentar com Amor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- CABEÇALHO E MENU: copie este bloco igual para projetos.html e cadastro.html,
+         mudando só a class="ativo" para o link da página atual -->
+    <header class="topo">
+        <div class="container">
+            <a class="marca" href="index.html">
+                <span class="logo">
+                    <img src="imagens/projetos/logo.png" alt="Logo da ONG Alimentar com Amor">
+                </span>
+                <span>ONG - Alimentar com Amor</span>
+            </a>
+            <button type="button" class="hamburguer" id="botao-menu" aria-label="Abrir ou fechar o menu">&#9776;</button>
+            <nav class="menu-principal" id="menu-principal">
+                <ul class="menu">
+                    <li><a href="index.html" class="ativo">Início</a></li>
+                    <li class="tem-submenu">
+                        <a href="projetos.html">Projetos</a>
+                        <ul class="submenu">
+                            <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                            <li><a href="projetos.html#como-doar">Como doar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="secao hero">
+            <div class="container">
+                <div>
+                    <h1>Comida na mesa de quem mais precisa</h1>
+                    <p>Somos uma ONG que leva cestas básicas, refeições e hortas comunitárias para famílias em situação de insegurança alimentar. Você pode ajudar doando ou sendo voluntário.</p>
+                    <div class="grupo-botoes">
+                        <a class="botao" href="cadastro.html">Quero ajudar</a>
+                        <a class="botao botao-sec" href="projetos.html">Conheça os projetos</a>
+                    </div>
+                </div>
+                <picture>
+                    <source srcset="imagens/index/hero.jpg" type="image/jpg">
+                    <img src="imagens/index/hero.jpg" alt="Voluntários montando cestas básicas em um galpão da ONG">
+                </picture>
+            </div>
+        </section>
+
+        <section class="secao secao-clara quem-somos" id="quem-somos">
+            <div class="container">
+                <picture>
+                    <source srcset="imagens/index/quem-somos.jpg" type="image/jpg">
+                    <img src="imagens/index/quem-somos.jpg" alt="Equipe da cozinha comunitária servindo o almoço">
+                </picture>
+                <div>
+                    <h2>Quem somos</h2>
+                    <p>A Alimentar com Amor nasceu da união de vizinhos que perceberam que muitas famílias do bairro estavam passando o dia sem uma refeição completa.</p>
+                    <p>Hoje reunimos voluntários, doadores e comerciantes locais para que ninguém fique sem comida, e para que cada doação seja prestada com transparência.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao" id="missao-visao-valores">
+            <div class="container">
+                <h2>Missão, visão e valores</h2>
+                <div class="grade">
+                    <article class="cartao col-md-6 col-lg-4">
+                        <h3>Missão</h3>
+                        <p>Garantir alimento de qualidade e dignidade a famílias em vulnerabilidade, por meio de doações e trabalho voluntário.</p>
+                    </article>
+                    <article class="cartao col-md-6 col-lg-4">
+                        <h3>Visão</h3>
+                        <p>Ser referência em combate à fome na nossa região, com uma rede de apoio forte e presente em cada bairro.</p>
+                    </article>
+                    <article class="cartao col-lg-4">
+                        <h3>Valores</h3>
+                        <ul>
+                            <li>Solidariedade</li>
+                            <li>Transparência</li>
+                            <li>Respeito</li>
+                            <li>Compromisso com a comunidade</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao secao-clara" id="historia">
+            <div class="container">
+                <h2>Nossa história e conquistas</h2>
+                <p>Começamos em 2019 distribuindo marmitas aos sábados. Em poucos anos, abrimos a cozinha comunitária e a horta urbana, e hoje atendemos famílias de vários bairros.</p>
+                <ul class="conquistas">
+                    <li><strong>12 mil</strong> refeições servidas por mês</li>
+                    <li><strong>800</strong> famílias atendidas</li>
+                    <li><strong>150</strong> voluntários ativos</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="secao" id="contato">
+            <div class="container">
+                <h2>Fale com a gente</h2>
+                <ul class="lista-contato">
+                    <li><strong>E-mail:</strong> contato@alimentarcomamor.org.br</li>
+                    <li><strong>Telefone:</strong> (11) 3000-0000</li>
+                    <li><strong>Endereço:</strong> Rua da Esperança, 123, Centro, São Paulo - SP</li>
+                    <li><strong>Atendimento:</strong> segunda a sexta, das 9h às 17h</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>&copy; 2026 Alimentar com Amor. Projeto acadêmico com dados fictícios.</p>
+            <p><a href="cadastro.html">Quero ser voluntário ou doador</a></p>
+        </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+</body>
+</html>

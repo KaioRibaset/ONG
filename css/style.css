@@ -1,0 +1,361 @@
+/* =========================================================
+   style.css | Alimentar com Amor (CSS global das 3 páginas)
+   Breakpoints mobile-first: 480px · 768px · 1024px · 1280px · 1536px
+   ========================================================= */
+
+/* ---------- 1. DESIGN SYSTEM (variáveis) ---------- */
+:root {
+  /* Cores: primárias, secundárias, neutras e de estado (15) */
+  --cor-primaria: #1b6b3a;
+  --cor-primaria-escura: #134d2a;
+  --cor-primaria-clara: #e3f1e8;
+  --cor-secundaria: #8e2c57;
+  --cor-secundaria-escura: #6b1f41;
+  --cor-destaque: #f5b301;
+  --cor-fundo: #f7f9f5;
+  --cor-superficie: #ffffff;
+  --cor-borda: #d6ddd2;
+  --cor-texto: #1f2933;
+  --cor-texto-suave: #52606d;
+  --cor-sucesso: #157347;
+  --cor-erro: #b42318;
+  --cor-aviso: #8a5a00;
+  --cor-foco: #0b5fff;
+
+  /* Tipografia: 6 tamanhos */
+  --fonte-titulo: Georgia, "Times New Roman", serif;
+  --fonte-texto: Arial, Helvetica, sans-serif;
+  --fs-300: 0.875rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.563rem;
+  --fs-700: 2rem;
+  --fs-800: 2.5rem;
+
+  /* Espaçamento modular */
+  --esp-1: 8px;
+  --esp-2: 16px;
+  --esp-3: 24px;
+  --esp-4: 32px;
+  --esp-5: 48px;
+  --esp-6: 64px;
+}
+
+/* ---------- 2. BASE ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  /* Grid da estrutura geral da página */
+  display: grid;
+  grid-template-areas: "topo" "conteudo" "rodape";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+.topo { grid-area: topo; }
+main { grid-area: conteudo; }
+.rodape { grid-area: rodape; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 { font-family: var(--fonte-titulo); line-height: 1.2; margin: 0 0 var(--esp-2); }
+h1 { font-size: var(--fs-700); }
+h2 { font-size: var(--fs-600); }
+h3 { font-size: var(--fs-500); }
+p { margin: 0 0 var(--esp-2); }
+a { color: var(--cor-primaria-escura); }
+
+/* Foco visível para quem navega pelo teclado */
+:focus { outline: 3px solid var(--cor-foco); outline-offset: 3px; }
+
+/* ---------- 3. LAYOUT: container, seções e grade de 12 colunas ---------- */
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 var(--esp-2); }
+.secao { padding: var(--esp-5) 0; }
+.secao-clara { background: var(--cor-primaria-clara); }
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--esp-3);
+}
+.grade > * { grid-column: span 12; }
+
+/* ---------- 4. CABEÇALHO E MENU ---------- */
+.topo {
+  position: relative;
+  z-index: 100;
+  background: var(--cor-superficie);
+  border-bottom: 4px solid var(--cor-primaria);
+}
+.topo .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--esp-1);
+  padding-bottom: var(--esp-1);
+}
+.logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--cor-superficie);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.3);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--cor-primaria-escura);
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 1.15rem;
+    white-space: nowrap;
+}
+
+/* Botão hambúrguer (só aparece no celular) */
+.hamburguer {
+  position: relative;
+  z-index: 2;
+  padding: var(--esp-1) var(--esp-2);
+  font-size: var(--fs-600);
+  line-height: 1;
+  color: var(--cor-primaria-escura);
+  background: none;
+  border: 2px solid var(--cor-primaria);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* No celular o menu é um painel lateral que desliza (classe .aberto) */
+.menu-principal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 250px;
+  height: 100vh;
+  padding: var(--esp-6) var(--esp-2) var(--esp-2);
+  background: var(--cor-primaria-escura);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.3s ease, visibility 0.3s;
+}
+.menu-principal.aberto { transform: translateX(0); visibility: visible; }
+.menu-principal :focus { outline-color: #fff; }
+
+.menu, .submenu { list-style: none; margin: 0; padding: 0; }
+.submenu { padding-left: var(--esp-2); }
+.menu a {
+  display: block;
+  padding: var(--esp-1) var(--esp-2);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.menu a:hover, .menu a.ativo { background: var(--cor-primaria); }
+
+/* ---------- 5. COMPONENTES ---------- */
+/* Botões: hover, focus (regra global), active e disabled */
+.botao {
+  display: inline-block;
+  padding: var(--esp-1) var(--esp-3);
+  font: inherit;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: var(--cor-primaria);
+  border: 2px solid var(--cor-primaria);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.botao:hover { background: var(--cor-primaria-escura); border-color: var(--cor-primaria-escura); }
+.botao:active { transform: translateY(1px); }
+.botao:disabled { opacity: 0.5; cursor: not-allowed; }
+.botao-sec { color: var(--cor-primaria-escura); background: transparent; }
+.botao-sec:hover { color: var(--cor-primaria-escura); background: var(--cor-primaria-clara); }
+.grupo-botoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.grupo-botoes .botao { flex: 1 1 100%; }
+
+/* Cards (flexbox por dentro) */
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+  padding: var(--esp-3);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-top: 4px solid var(--cor-primaria);
+  border-radius: 10px;
+}
+.cartao h3, .cartao p, .cartao ul { margin: 0; }
+.cartao ul { padding-left: var(--esp-3); }
+
+/* Badges e tags */
+.badge, .tag {
+  display: inline-block;
+  padding: 2px var(--esp-1);
+  font-size: var(--fs-300);
+  font-weight: bold;
+  color: var(--cor-primaria-escura);
+  background: var(--cor-primaria-clara);
+  border-radius: 999px;
+}
+.tag { color: var(--cor-secundaria-escura); background: #f6e3ec; }
+
+/* Feedback: alertas, toast e modal (toast e modal abrem com a classe .aberto) */
+.alerta {
+  padding: var(--esp-2);
+  background: var(--cor-superficie);
+  border-left: 6px solid var(--cor-borda);
+  border-radius: 8px;
+}
+.alerta-sucesso { border-color: var(--cor-sucesso); }
+.alerta-erro { border-color: var(--cor-erro); }
+.alerta-aviso { border-color: var(--cor-aviso); }
+
+.toast {
+  position: fixed;
+  right: var(--esp-2);
+  bottom: var(--esp-2);
+  max-width: 320px;
+  padding: var(--esp-2);
+  color: #fff;
+  background: var(--cor-texto);
+  border-radius: 8px;
+  transform: translateY(200%);
+  transition: transform 0.3s ease;
+}
+.toast.aberto { transform: translateY(0); }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal.aberto { display: flex; }
+.modal-caixa {
+  width: 90%;
+  max-width: 480px;
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border-radius: 10px;
+}
+
+/* Base de formulário (cadastro.css complementa) */
+fieldset { margin: 0 0 var(--esp-3); padding: var(--esp-3); border: 1px solid var(--cor-borda); border-radius: 10px; }
+legend { padding: 0 var(--esp-1); font-weight: bold; }
+label { display: block; margin-bottom: 4px; font-weight: bold; }
+input, select {
+  width: 100%;
+  padding: var(--esp-1) 12px;
+  font: inherit;
+  background: var(--cor-superficie);
+  border: 2px solid var(--cor-borda);
+  border-radius: 8px;
+}
+input:valid, select:valid { border-color: var(--cor-sucesso); }
+input:focus:invalid, select:focus:invalid { border-color: var(--cor-erro); }
+
+/* ---------- 6. SEÇÕES DA HOME ---------- */
+.hero .container, .quem-somos .container { display: grid; gap: var(--esp-4); align-items: center; }
+.hero img, .quem-somos img { width: 100%; border-radius: 10px; }
+
+.conquistas { display: flex; flex-wrap: wrap; gap: var(--esp-4); margin: var(--esp-3) 0 0; padding: 0; list-style: none; }
+.conquistas strong { display: block; font-family: var(--fonte-titulo); font-size: var(--fs-700); color: var(--cor-secundaria); }
+.lista-contato { display: grid; gap: var(--esp-1); margin: 0; padding: 0; list-style: none; }
+
+/* ---------- 7. RODAPÉ ---------- */
+.rodape { padding: var(--esp-4) 0; font-size: var(--fs-300); color: #fff; background: var(--cor-primaria-escura); }
+.rodape .container { display: flex; flex-wrap: wrap; gap: var(--esp-2); justify-content: space-between; }
+.rodape a { color: #fff; }
+.rodape :focus { outline-color: #fff; }
+.rodape p { margin: 0; }
+
+/* ---------- 8. BREAKPOINTS (mobile-first) ---------- */
+/* 480px: botões deixam de ocupar a linha toda */
+@media (min-width: 480px) {
+  .grupo-botoes .botao { flex: 0 0 auto; }
+}
+
+/* 768px: menu horizontal com dropdown, 2 colunas na grade */
+@media (min-width: 768px) {
+  .container { padding: 0 var(--esp-3); }
+  h1 { font-size: var(--fs-800); }
+  h2 { font-size: var(--fs-700); }
+
+  .hamburguer { display: none; }
+  .menu-principal {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: none;
+    transform: none;
+    visibility: visible;
+  }
+  .menu-principal :focus { outline-color: var(--cor-foco); }
+  .menu { display: flex; gap: var(--esp-1); }
+  .menu a { color: var(--cor-texto); }
+  .menu a:hover, .menu a.ativo { color: var(--cor-primaria-escura); background: var(--cor-primaria-clara); }
+
+  .tem-submenu { position: relative; }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    padding: var(--esp-1);
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+  }
+  .tem-submenu:hover .submenu,
+  .tem-submenu:focus-within .submenu { display: block; }
+
+  .col-md-6 { grid-column: span 6; }
+}
+
+/* 1024px: hero e "quem somos" em 2 colunas, 3 cards por linha */
+@media (min-width: 1024px) {
+  .secao { padding: var(--esp-6) 0; }
+  .hero .container, .quem-somos .container { grid-template-columns: 1fr 1fr; }
+  .col-lg-4 { grid-column: span 4; }
+  .col-lg-6 { grid-column: span 6; }
+}
+
+/* 1280px: container mais largo */
+@media (min-width: 1280px) {
+  .container { max-width: 1200px; }
+}
+
+/* 1536px: telas muito largas */
+@media (min-width: 1536px) {
+  .container { max-width: 1360px; }
+  body { font-size: 1.125rem; }
+}

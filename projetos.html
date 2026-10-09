@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os projetos sociais da Alimentar com Amor: cestas básicas, cozinha comunitária e horta urbana. Veja como ser voluntário e como doar alimentos, dinheiro ou tempo.">
+    <title>Projetos - Alimentar com Amor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/projetos.css">
+</head>
+<body>
+    <!-- CABEÇALHO E MENU: igual ao do index.html (só muda o class="ativo") -->
+    <header class="topo">
+        <div class="container">
+            <a class="marca" href="index.html">
+                <span class="logo">
+                    <img src="imagens/projetos/logo.png" alt="Logo da ONG Alimentar com Amor">
+                </span>
+                <span>ONG - Alimentar com Amor</span>
+            </a>
+
+            <button type="button" class="hamburguer" id="botao-menu" aria-label="Abrir ou fechar o menu">&#9776;</button>
+            <nav class="menu-principal" id="menu-principal">
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li class="tem-submenu">
+                        <a href="projetos.html" class="ativo">Projetos</a>
+                        <ul class="submenu">
+                            <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                            <li><a href="projetos.html#como-doar">Como doar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Apresentação + carrossel -->
+        <section class="secao secao-clara">
+            <div class="container apresentacao-grade">
+                <div>
+                    <h1>Alguns dos nossos projetos</h1>
+                    <p class="introducao">Cada projeto da Alimentar com Amor nasceu para combater a fome de um jeito diferente. Conheça o que fazemos e veja como você pode ajudar.</p>
+                </div>
+
+                <!-- Carrossel simples: o JavaScript troca os slides -->
+                <div class="carrossel" id="carrossel" role="region" aria-label="Fotos dos projetos">
+                    <div class="carrossel-slides">
+                        <figure class="slide ativo">
+                            <img src="imagens/projetos/volun2.jpeg" alt="Voluntários na entrega de cestas básicas">
+                            <span class="legenda">Entrega de cestas básicas</span>
+                        </figure>
+                        <figure class="slide">
+                            <img src="imagens/projetos/volun.jpeg" alt="Cestas básicas">
+                            <span class="legenda">Doação de alimentos</span>
+                        </figure>
+                        <figure class="slide">
+                            <img src="imagens/projetos/volun1.jpeg" alt="Cozinha comunitária">
+                            <span class="legenda">Cozinha comunitária</span>
+                        </figure>
+                    </div>
+
+                    <div class="carrossel-controles">
+                        <button type="button" class="carrossel-botao" id="slide-anterior" aria-label="Foto anterior">&#10094;</button>
+                        <div class="carrossel-pontos" id="slide-pontos">
+                            <button type="button" class="ponto ativo" aria-label="Ir para a foto 1"></button>
+                            <button type="button" class="ponto" aria-label="Ir para a foto 2"></button>
+                            <button type="button" class="ponto" aria-label="Ir para a foto 3"></button>
+                        </div>
+                        <button type="button" class="carrossel-botao" id="slide-proximo" aria-label="Próxima foto">&#10095;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos sociais -->
+        <section class="secao">
+            <div class="container">
+                <h2>Projetos sociais</h2>
+                <div class="grade">
+                    <article class="cartao cartao-img col-md-6 col-lg-4">
+                        <img src="imagens/projetos/basica.jpeg" width="600" height="400" loading="lazy" alt="Cestas básicas organizadas para entrega">
+                        <div class="cartao-texto">
+                            <h3>Cestas básicas</h3>
+                            <p>Distribuímos cestas básicas para famílias em situação de vulnerabilidade social, garantindo que tenham acesso a alimentos essenciais.</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao cartao-img col-md-6 col-lg-4">
+                        <img src="imagens/projetos/comuni.jpeg" width="600" height="400" loading="lazy" alt="Voluntários preparando refeições em uma cozinha comunitária">
+                        <div class="cartao-texto">
+                            <h3>Cozinha Comunitária</h3>
+                            <p>Oferecemos refeições quentes e nutritivas em nossa cozinha comunitária, proporcionando um espaço de acolhimento e solidariedade para aqueles que mais precisam.</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao cartao-img col-lg-4">
+                        <img src="imagens/projetos/urbana.jpeg" width="600" height="400" loading="lazy" alt="Horta urbana cultivada em área pública">
+                        <div class="cartao-texto">
+                            <h3>Horta urbana</h3>
+                            <p>Cultivamos hortas urbanas em áreas públicas, promovendo a alimentação saudável e o acesso a produtos frescos e nutritivos para a comunidade.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voluntariado -->
+        <section class="secao secao-clara" id="voluntariado">
+            <div class="container voluntariado-grade">
+                <div>
+                    <h2>Voluntariado</h2>
+                    <p>Qualquer pessoa pode ajudar, não precisa ter experiência. Basta ter vontade e um pouco de tempo livre.</p>
+                </div>
+                <div>
+                    <h3>Como participar</h3>
+                    <ol class="passos">
+                        <li>Preencha o formulário na página de <a href="cadastro.html">cadastro</a>.</li>
+                        <li>Escolha o projeto em que quer ajudar.</li>
+                        <li>Receba o contato da nossa equipe com dia, horário e local.</li>
+                        <li>Comece a ajudar!</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como doar -->
+        <section class="secao" id="como-doar">
+            <div class="container">
+                <h2>Como doar</h2>
+                <p class="introducao">Você pode ajudar de três formas. Os dados abaixo são fictícios, feitos só para este trabalho.</p>
+
+                <div class="grade">
+                    <article class="cartao col-md-6 col-lg-4">
+                        <h3>Alimentos</h3>
+                        <p>Aceitamos alimentos não perecíveis, como arroz, feijão, macarrão, óleo e leite em pó.</p>
+                        <p>Ponto de entrega: Rua da Esperança, 100, de segunda a sexta, das 9h às 17h.</p>
+                    </article>
+
+                    <article class="cartao col-md-6 col-lg-4">
+                        <h3>Dinheiro</h3>
+                        <p>Toda quantia ajuda a comprar alimentos para as cestas e para a cozinha.</p>
+                        <p>Chave Pix (fictícia): <strong id="chave-pix">doacoes@exemplo.org</strong><br>Banco Exemplo, agência 0000, conta 00000-0</p>
+                        <button type="button" class="botao botao-sec" id="botao-copiar">Copiar chave Pix</button>
+                        <p class="mensagem" id="mensagem-pix" role="status" aria-live="polite"></p>
+                    </article>
+
+                    <article class="cartao col-lg-4">
+                        <h3>Tempo</h3>
+                        <p>Doe algumas horas por semana para cozinhar, separar doações ou cuidar da horta.</p>
+                        <p>Veja a seção de <a href="#voluntariado">voluntariado</a> e faça seu cadastro.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de fotos -->
+        <section class="secao secao-clara" id="galeria">
+            <div class="container">
+                <h2>Galeria de fotos</h2>
+                <div class="grade galeria">
+                    <figure class="col-md-6 col-lg-4">
+                        <img src="imagens/projetos/voluntario1.jpeg" width="600" height="400" loading="lazy" alt="Voluntários entregando cestas básicas a uma família">
+                        <figcaption>Entrega de cestas</figcaption>
+                    </figure>
+
+                    <figure class="col-md-6 col-lg-4">
+                        <img src="imagens/projetos/refeicao.jpeg" width="600" height="400" loading="lazy" alt="Pessoas almoçando juntas na cozinha comunitária">
+                        <figcaption>Refeição coletiva</figcaption>
+                    </figure>
+
+                    <figure class="col-lg-4">
+                        <img src="imagens/projetos/multi.jpeg" width="600" height="400" loading="lazy" alt="Voluntários plantando mudas na horta urbana">
+                        <figcaption>Mutirão na horta</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chamada final -->
+        <aside class="destaque">
+            <div class="container">
+                <h2>Quer ajudar agora?</h2>
+                <p>Faça seu cadastro e entraremos em contato.</p>
+                <p><a class="botao" href="cadastro.html">Ir para o cadastro</a></p>
+            </div>
+        </aside>
+
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>&copy; 2026 Alimentar com Amor. Projeto acadêmico com dados fictícios.</p>
+            <p><a href="cadastro.html">Quero ser voluntário ou doador</a></p>
+        </div>
+    </footer>
+
+    <script src="js/menu.js"></script>
+    <script src="js/projetos.js"></script>
+</body>
+</html>

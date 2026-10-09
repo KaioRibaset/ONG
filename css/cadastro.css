@@ -1,0 +1,107 @@
+/* =========================================================
+   cadastro.css | estilos SÓ da página Cadastro
+   Depende do style.css (carregue o style.css antes): usa as
+   variáveis, o container, as seções, os cards, botões e o menu dele.
+   Breakpoints usados: 768px e 1024px (os mesmos do style.css)
+   ========================================================= */
+
+[hidden] { display: none !important; }
+
+/* ---------- Apresentação ---------- */
+.introducao { max-width: 62ch; margin-bottom: 0; font-size: var(--fs-500); color: var(--cor-texto-suave); }
+
+/* ---------- Mensagem de sucesso/erro (o JavaScript troca a classe) ---------- */
+.mensagem { min-height: 1.6em; margin: 0; font-weight: bold; }
+.mensagem.sucesso { color: var(--cor-sucesso); }
+.mensagem.erro { color: var(--cor-erro); }
+.mensagem a { color: var(--cor-primaria-escura); }
+
+/* ---------- Formulário (complementa o .cartao e a base de formulário do style.css) ---------- */
+.alerta { margin: 0 0 var(--esp-3); }
+
+.formulario { gap: var(--esp-3); padding: var(--esp-3); }
+.formulario-grade { display: grid; gap: var(--esp-2) var(--esp-3); }
+.campo { margin: 0; }
+.campo-largo { grid-column: 1 / -1; }
+
+.campo label,
+.campo legend { margin-bottom: 4px; padding: 0; color: var(--cor-primaria-escura); }
+.campo .opcional { font-weight: normal; color: var(--cor-texto-suave); }
+
+textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: var(--esp-1) 12px;
+  font: inherit;
+  background: var(--cor-superficie);
+  border: 2px solid var(--cor-borda);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+input:hover, select:hover, textarea:hover { border-color: var(--cor-primaria); }
+
+/* Erros (o JavaScript preenche o texto e o aria-invalid) */
+.campo [aria-invalid="true"] { border-color: var(--cor-erro); }
+.erro-campo { min-height: 1.4em; margin: 4px 0 0; font-size: var(--fs-300); font-weight: bold; color: var(--cor-erro); }
+.ajuda { margin: 4px 0 0; font-size: var(--fs-300); color: var(--cor-texto-suave); }
+
+/* Dias da semana: caixas de marcar em formato de botão */
+fieldset.campo { min-width: 0; margin: 0; padding: 0; border: 0; }
+.opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-1); }
+.opcao { position: relative; margin: 0; font-weight: normal; }
+.opcao input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.opcao span {
+  display: inline-block;
+  padding: 4px var(--esp-2);
+  font-weight: bold;
+  color: var(--cor-primaria-escura);
+  background: var(--cor-superficie);
+  border: 2px solid var(--cor-borda);
+  border-radius: 999px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.opcao:hover span { border-color: var(--cor-primaria); }
+.opcao input:checked + span { color: #fff; background: var(--cor-primaria); border-color: var(--cor-primaria); }
+.opcao input:focus-visible + span { outline: 3px solid var(--cor-foco); outline-offset: 3px; }
+
+/* Aceite dos termos */
+.aceite { display: flex; align-items: flex-start; gap: var(--esp-1); font-weight: normal; }
+.aceite input { flex-shrink: 0; width: 1.25rem; height: 1.25rem; margin-top: 4px; accent-color: var(--cor-primaria); }
+
+/* Botões do formulário */
+.formulario-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+.formulario-acoes .mensagem { flex: 1 1 220px; }
+
+/* ---------- Lista de voluntários cadastrados ---------- */
+.lista-topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); margin-bottom: var(--esp-3); }
+.lista-topo h2 { margin: 0; }
+.lista-botoes { display: flex; flex-wrap: wrap; gap: var(--esp-1); }
+
+.voluntarios { display: grid; gap: var(--esp-3); margin: 0; padding: 0; list-style: none; }
+.voluntario { padding: var(--esp-3); }
+.voluntario h3, .voluntario p { overflow-wrap: anywhere; }
+.voluntario .badge { align-self: flex-start; }
+.voluntario .data { font-size: var(--fs-300); color: var(--cor-texto-suave); }
+.voluntario .botao { align-self: flex-start; margin-top: var(--esp-1); padding: 4px var(--esp-2); font-size: var(--fs-300); }
+
+.lista-vazia {
+  margin: 0;
+  padding: var(--esp-4) var(--esp-2);
+  text-align: center;
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+  border: 2px dashed var(--cor-borda);
+  border-radius: 10px;
+}
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 768px) {
+  .formulario { padding: var(--esp-4); }
+  .formulario-grade { grid-template-columns: repeat(2, 1fr); }
+  .voluntarios { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .voluntarios { grid-template-columns: repeat(3, 1fr); }
+}
